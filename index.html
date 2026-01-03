@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Control 2026</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="container">
+    <header class="header">
+      <h1>Control de Gastos e Ingresos</h1>
+      <p class="muted">Perfiles separados • Firestore • Fecha y hora automática</p>
+    </header>
+
+    <!-- PROFILES -->
+    <section class="card">
+      <div class="toprow">
+        <h2>Perfiles</h2>
+        <button id="btnNewProfile" class="secondary">+ Nuevo perfil</button>
+      </div>
+
+      <div class="row">
+        <select id="profileSelect"></select>
+        <button id="btnEditProfile" class="secondary">Editar</button>
+        <button id="btnDeleteProfile" class="danger">Eliminar</button>
+      </div>
+
+      <p class="msg" id="profileMsg"></p>
+    </section>
+
+    <!-- ADD TX -->
+    <section class="card">
+      <h2>Agregar movimiento</h2>
+
+      <div class="row">
+        <select id="type">
+          <option value="expense">Gasto</option>
+          <option value="income">Ingreso</option>
+        </select>
+
+        <input id="amount" type="number" step="0.01" placeholder="Monto" />
+        <input id="category" type="text" placeholder="Categoría (ej: comida)" />
+      </div>
+
+      <div class="row">
+        <input id="description" type="text" placeholder="Descripción (opcional)" />
+        <button id="btnAdd">Guardar</button>
+      </div>
+
+      <p class="msg" id="txMsg"></p>
+    </section>
+
+    <!-- SUMMARY -->
+    <section class="grid">
+      <div class="card">
+        <p class="muted">Ingresos</p>
+        <h3 id="sumIncome">$0.00</h3>
+      </div>
+      <div class="card">
+        <p class="muted">Gastos</p>
+        <h3 id="sumExpense">$0.00</h3>
+      </div>
+      <div class="card">
+        <p class="muted">Balance</p>
+        <h3 id="sumBalance">$0.00</h3>
+      </div>
+    </section>
+
+    <!-- LIST -->
+    <section class="card">
+      <div class="toprow">
+        <h2>Movimientos del perfil</h2>
+        <button id="btnExport" class="secondary">Exportar CSV</button>
+      </div>
+      <div id="txList" class="list"></div>
+    </section>
+
+    <!-- MODAL PERFIL -->
+    <dialog id="profileDialog" class="modal">
+      <form method="dialog" class="modalCard">
+        <h3 id="modalTitle">Nuevo perfil</h3>
+        <input id="profileName" type="text" placeholder="Nombre del perfil (ej: Elihú)" />
+        <div class="row end">
+          <button value="cancel" class="secondary">Cancelar</button>
+          <button id="btnSaveProfile" value="ok">Guardar</button>
+        </div>
+        <p class="msg" id="modalMsg"></p>
+      </form>
+    </dialog>
+
+    <footer class="footer muted">Enero 2026</footer>
+  </main>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
